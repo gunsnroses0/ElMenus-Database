@@ -36,25 +36,6 @@ public class DatabaseService {
 
 	public static void main(String[] argv) {
 
-		MongoClientURI uri = new MongoClientURI(
-				"mongodb://admin:admin@cluster0-shard-00-00-nvkqp.gcp.mongodb.net:27017,cluster0-shard-00-01-nvkqp.gcp.mongodb.net:27017,cluster0-shard-00-02-nvkqp.gcp.mongodb.net:27017/El-Menus?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true");
-
-		MongoClient mongoClient = new MongoClient(uri);
-		MongoDatabase database = mongoClient.getDatabase("El-Menus");
-		
-		System.out.println("Connected");
-		database.createCollection("mycollection");
-		MongoCollection<Document> orders = database.getCollection("Orders");
-		
-		Document document = new Document("title", "MongoDB").append("id", 1).append("description", "database")
-				.append("likes", 100).append("url", "http://www.tutorialspoint.com/mongodb/")
-				.append("by", "tutorials point");
-		orders.insertOne(document);		
-		System.out.println(orders);
-		System.out.println(document);
-
-
-
 		// initialize thread pool of fixed size
 		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
 		initDBPool();
