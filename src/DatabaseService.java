@@ -113,24 +113,17 @@ public class DatabaseService {
 	}
 
 	public static void initDBPool() {
-//        String host = System.getenv("POSTGRES_SERVICE_HOST");
-//        System.out.println(host);
-// 		HikariConfig jdbcConfig = new HikariConfig();
-// 		jdbcConfig.setPoolName("test pool");
-// 		jdbcConfig.setMaximumPoolSize(10);
-// 		jdbcConfig.setMinimumIdle(2);
-// 		jdbcConfig.setJdbcUrl("jdbc:postgresql://localhost:5432/El-Menus");
-// 		jdbcConfig.setUsername("eletreby");
-// 		jdbcConfig.setPassword("1234");
-// 		source = new HikariDataSource(jdbcConfig);
-		        String host = System.getenv("POSTGRES_SERVICE_HOST");
-        source = new PGPoolingDataSource();
-        source.setDataSourceName("A Data Source");
-        source.setServerName(host);
-        source.setDatabaseName("postgres");
-        source.setUser("postgres");
-        source.setPassword("");
-        source.setMaxConnections(10);
+        String host = System.getenv("POSTGRES_SERVICE_HOST");
+        System.out.println(host);
+ 		HikariConfig jdbcConfig = new HikariConfig();
+ 		jdbcConfig.setPoolName("test pool");
+ 		jdbcConfig.setMaximumPoolSize(10);
+ 		jdbcConfig.setMinimumIdle(2);
+ 		jdbcConfig.setJdbcUrl("jdbc:postgresql://"+host+":5432/postgres");
+ 		jdbcConfig.setUsername("postgres");
+ 		jdbcConfig.setPassword("");
+ 		source = new HikariDataSource(jdbcConfig);
+
 	}
 
 }
